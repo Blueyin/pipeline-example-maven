@@ -3,8 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: maven:3.6.0-jdk-8
-      shellScript: |-
-        mvn clean install
+      shellScript: mvn clean install
 - name: Publish
   steps:
   - publishImageConfig:
@@ -15,3 +14,4 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+timeout: 20
