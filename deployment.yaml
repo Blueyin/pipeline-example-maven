@@ -33,4 +33,12 @@ spec:
       - name: maven
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
+        volumeMounts:
+          - name: host-time
+            mountPath: /etc/localtime
+            readOnly: true
+          volumes:
+          - name: host-time
+    hostPath:
+      path: /etc/localtime
         - containerPort: 8080
