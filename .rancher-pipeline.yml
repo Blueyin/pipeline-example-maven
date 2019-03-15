@@ -1,6 +1,12 @@
 stages:
 - name: Build
   steps:
+  - runScriptConfig:
+      image: maven:3-jdk-7
+      shellScript: |-
+        mvn clean install
+- name: Publish
+  steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
@@ -9,4 +15,3 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-timeout: 20
